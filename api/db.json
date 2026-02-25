@@ -1,0 +1,11 @@
+{
+  "tipos-banho": [
+    {
+      "id": "4eb5",
+      "nome": "Banho Completo",
+      "descricao": "Inclui lavagem total do corpo, remoção de odores e sujeira, ideal para todos os tipos de pets, especialmente de pelo longo.",
+      "valor": 60.9
+    }
+  ],
+  "agendamentos": []
+}

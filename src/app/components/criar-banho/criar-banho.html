@@ -16,7 +16,9 @@
         <label class="block text-sm font-medium text-gray-700">Nome do Banho</label>
         <input
           type="text"
+          name="nome"
           placeholder="Ex: Banho Premium"
+          [(ngModel)]="novoBanho.nome"
           class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
         />
       </div>
@@ -24,8 +26,10 @@
       <div>
         <label class="block text-sm font-medium text-gray-700">Descrição</label>
         <textarea
+          name="descricao"
           placeholder="O que inclui este banho?"
           rows="3"
+          [(ngModel)]="novoBanho.descricao"
           class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
         ></textarea>
       </div>
@@ -33,8 +37,10 @@
       <div>
         <label class="block text-sm font-medium text-gray-700">Valor (R$)</label>
         <input
+          name="valor"
           type="number"
           placeholder="0,00"
+          [(ngModel)]="novoBanho.valor"
           class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
         />
       </div>
@@ -49,6 +55,7 @@
         </button>
         <button
           type="submit"
+          (click)="salvar()"
           class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-md transition cursor-pointer"
         >
           Salvar
