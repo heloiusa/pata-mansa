@@ -1,0 +1,108 @@
+<div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex justify-center items-center p-4">
+  <div
+    class="bg-white h-140 rounded-xl shadow-2xl w-full max-w-md overflow-y-auto transform transition-all"
+  >
+    <div
+      class="fixed w-full max-w-md rounded-t-xl bg-blue-600 p-4 text-white flex justify-between items-center"
+    >
+      <h2 class="text-xl font-bold flex items-center gap-2">
+        <fa-icon [icon]="iconAdd"></fa-icon> Novo Agendamento
+      </h2>
+      <button (click)="fechar()" class="hover:rotate-90 transition-transform cursor-pointer">
+        <fa-icon [icon]="iconClose"></fa-icon>
+      </button>
+    </div>
+
+    <form class="p-6 space-y-4 mt-14">
+      <!-- Nome do Tutor -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Nome do Tutor</label>
+        <input
+          type="text"
+          placeholder="Ex: Paulo Joaquim"
+          class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+      </div>
+
+      <!-- Telefone -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Telefone</label>
+        <input
+          type="text"
+          placeholder="Ex: (81) 90123-6789"
+          class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+      </div>
+
+      <!-- Nome do Animal -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Nome do Animal</label>
+        <input
+          type="text"
+          placeholder="Ex: Capitão Romrom"
+          class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+      </div>
+
+      <!-- Obs do Animal -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Observação</label>
+        <textarea
+          placeholder="Tem alguma observação sobre esse agendamento?"
+          rows="3"
+          class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
+        ></textarea>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Tipo de Banho</label>
+        <select
+          name="tipoBanho"
+          id="tipoBanho"
+          class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
+        >
+          <option value="">Banho</option>
+        </select>
+      </div>
+
+      <!-- Horário -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Data e Hora</label>
+        <div class="flex flex-row gap-2">
+          <input
+            type="date"
+            placeholder="Ex: Data e hora"
+            class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
+          />
+          <input
+            type="time"
+            placeholder=""
+            class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
+          />
+        </div>
+      </div>
+
+      <!-- Valor do Banho -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Valor (R$)</label>
+        <p>valor</p>
+      </div>
+
+      <div class="flex justify-between mt-6">
+        <button
+          type="button"
+          (click)="fechar()"
+          class="border border-gray-300 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition cursor-pointer"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-md transition cursor-pointer"
+        >
+          Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
