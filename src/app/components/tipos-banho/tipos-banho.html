@@ -11,13 +11,18 @@
     class="rounded-lg cursor-pointer px-3 py-1 text-white bg-blue-600 hover:bg-blue-500 shadow-md transition-all duration-300"
   >
     Pesquisar
-    <fa-icon [icon]="iconSearch" ></fa-icon>
+    <fa-icon [icon]="iconSearch"></fa-icon>
   </button>
   <button
+    (click)="abrirModal()"
     type="button"
     class="rounded-lg cursor-pointer px-3 py-1 text-white bg-blue-600 hover:bg-blue-500 shadow-md transition-all duration-300"
   >
     Novo Banho
-    <fa-icon [icon]="iconAdd" ></fa-icon>
+    <fa-icon [icon]="iconAdd"></fa-icon>
   </button>
+
+  @if (exibirModal) {
+    <app-criar-banho (aoFechar)="exibirModal = false"></app-criar-banho>
+  }
 </div>

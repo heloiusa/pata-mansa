@@ -1,1 +1,59 @@
-<p>criar-banho works!</p>
+<div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex justify-center items-center p-4">
+  <div
+    class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all"
+  >
+    <div class="bg-blue-600 p-4 text-white flex justify-between items-center">
+      <h2 class="text-xl font-bold flex items-center gap-2">
+        <fa-icon [icon]="iconAdd"></fa-icon> Novo Tipo de Banho
+      </h2>
+      <button (click)="fechar()" class="hover:rotate-90 transition-transform cursor-pointer">
+        <fa-icon [icon]="iconClose"></fa-icon>
+      </button>
+    </div>
+
+    <form class="p-6 space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Nome do Banho</label>
+        <input
+          type="text"
+          placeholder="Ex: Banho Premium"
+          class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Descrição</label>
+        <textarea
+          placeholder="O que inclui este banho?"
+          rows="3"
+          class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
+        ></textarea>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Valor (R$)</label>
+        <input
+          type="number"
+          placeholder="0,00"
+          class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
+        />
+      </div>
+
+      <div class="flex justify-between mt-6">
+        <button
+          type="button"
+          (click)="fechar()"
+          class="border border-gray-300 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition cursor-pointer"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 shadow-md transition cursor-pointer"
+        >
+          Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
