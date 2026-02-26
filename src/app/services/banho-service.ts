@@ -28,4 +28,9 @@ export class BanhoService {
   criar(banho: TipoBanho): Observable<TipoBanho> {
     return this.http.post<TipoBanho>(this.API, banho)
   }
+
+  // Método para editar (PUT)
+  editar(banho: TipoBanho): Observable<TipoBanho> {
+    return this.http.put<TipoBanho>(`${this.API}/${banho.id}`, banho)
+  }
 }

@@ -1,28 +1,68 @@
-<div class="flex mx-30 gap-2 m-0 justify-between items-center">
-  <input
-    type="text"
-    name=""
-    id=""
-    placeholder="Nome do banho"
-    class="border border-gray-300 rounded-lg flex-1 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-  />
-  <button
-    type="submit"
-    class="rounded-lg cursor-pointer px-3 py-1 text-white bg-blue-600 hover:bg-blue-500 shadow-md transition-all duration-300"
-  >
-    Pesquisar
-    <fa-icon [icon]="iconSearch"></fa-icon>
-  </button>
-  <button
-    (click)="abrirModal()"
-    type="button"
-    class="rounded-lg cursor-pointer px-3 py-1 text-white bg-blue-600 hover:bg-blue-500 shadow-md transition-all duration-300"
-  >
-    Novo Banho
-    <fa-icon [icon]="iconAdd"></fa-icon>
-  </button>
+<div class="flex flex-col mx-30 m-0 justify-between items-center">
+  <div class="flex flex-row w-full justify-between items-center gap-2">
+    <input
+      type="text"
+      name=""
+      id=""
+      placeholder="Nome do banho"
+      class="border border-gray-300 rounded-lg flex-1 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+    />
+    <button
+      type="submit"
+      class="rounded-lg cursor-pointer px-3 py-1 text-white bg-blue-600 hover:bg-blue-500 shadow-md transition-all duration-300"
+    >
+      Pesquisar
+      <fa-icon [icon]="iconSearch"></fa-icon>
+    </button>
+    <button
+      (click)="abrirModal()"
+      type="button"
+      class="rounded-lg cursor-pointer px-3 py-1 text-white bg-blue-600 hover:bg-blue-500 shadow-md transition-all duration-300"
+    >
+      Novo Banho
+      <fa-icon [icon]="iconAdd"></fa-icon>
+    </button>
 
-  @if (exibirModal) {
-    <app-criar-banho (aoFechar)="exibirModal = false"></app-criar-banho>
-  }
+    @if (exibirModal) {
+      <app-criar-banho 
+      [banhoParaEditar]="banhoSelecionado"
+      (aoFechar)="fecharModal()"></app-criar-banho>
+    }
+  </div>
+
+  <div class="mt-6 w-full shadow bg-blue-600 ring-opacity-5 md:rounded-lg">
+    <table class="min-w-full divide-y divide-gray-300">
+      <thead class="hover:scale-101 transition-all duration-300">
+        <th class="py-2 px-3 pr-3 text-left text-sm font-semibold text-white">Nome</th>
+        <th class="py-2 px-2 pr-3 text-left text-sm font-semibold text-white">Descrição</th>
+        <th class="py-2 px-2 pr-3 text-left text-sm font-semibold text-white">Valor</th>
+        <th class="py-2 px-2 pr-3 text-left text-sm font-semibold text-white">Ação</th>
+      </thead>
+      <tbody class="divide-y divide-gray-200 bg-white">
+        @for (banho of listaBanhos; track banho.id) {
+          <tr class="hover:scale-101 transition-all duration-300">
+            <td class="whitespace-nowrap py-4 px-3 text-sm">{{ banho.nome }}</td>
+            <td class="px-2 py-4 text-sm max-w-xs truncate">{{ banho.descricao }}</td>
+            <td class="whitespace-nowrap px-3 py-4 text-sm">{{ banho.valor }}</td>
+            <td class="whitespace-nowrap py-4 text-sm font-medium space-x-3">
+              <button 
+              (click)="prepararEdicao(banho)"
+              class="text-blue-600 hover:text-blue-500 cursor-pointer">
+                <fa-icon [icon]="iconEdit"></fa-icon>
+              </button>
+              <button class="text-red-500 hover:text-red-300 cursor-pointer">
+                <fa-icon [icon]="iconTrash"></fa-icon>
+              </button>
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="4" class="py-10 text-center text-gray-500">
+              Nenhum banho cadastrado. Clique em "Novo Banho" para começar!
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>

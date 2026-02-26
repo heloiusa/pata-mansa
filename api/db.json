@@ -4,7 +4,19 @@
       "id": "4eb5",
       "nome": "Banho Completo",
       "descricao": "Inclui lavagem total do corpo, remoção de odores e sujeira, ideal para todos os tipos de pets, especialmente de pelo longo.",
-      "valor": 60.9
+      "valor": 60
+    },
+    {
+      "id": "4725",
+      "nome": "teste",
+      "descricao": "teste",
+      "valor": 100
+    },
+    {
+      "id": "20d2",
+      "nome": "Banho Higiênico",
+      "descricao": "Focado na limpeza de áreas específicas como patas, barriga e região genital, ideal para manutenção.",
+      "valor": 80
     }
   ],
   "agendamentos": []
