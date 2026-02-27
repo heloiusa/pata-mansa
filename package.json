@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "server": "npx json-server api/db.json"
   },
   "prettier": {
     "printWidth": 100,
@@ -31,6 +32,7 @@
     "@angular/router": "^21.1.0",
     "@fortawesome/angular-fontawesome": "^4.0.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "ngx-mask": "^21.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

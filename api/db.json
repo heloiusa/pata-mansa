@@ -4,19 +4,49 @@
       "id": "4eb5",
       "nome": "Banho Completo",
       "descricao": "Inclui lavagem total do corpo, remoção de odores e sujeira, ideal para todos os tipos de pets, especialmente de pelo longo.",
-      "valor": 60
-    },
-    {
-      "id": "4725",
-      "nome": "teste",
-      "descricao": "teste",
-      "valor": 100
+      "valor": "90.00"
     },
     {
       "id": "20d2",
       "nome": "Banho Higiênico",
       "descricao": "Focado na limpeza de áreas específicas como patas, barriga e região genital, ideal para manutenção.",
       "valor": 80
+    },
+    {
+      "id": "dd8f",
+      "nome": "Higiênico (Simples)",
+      "descricao": "O básico essencial: lavagem com shampoo/condicionador, limpeza de ouvidos, corte de unhas e secagem.\tManutenção regular de todas as raças",
+      "valor": "70.00"
+    },
+    {
+      "id": "29ed",
+      "nome": "Medicinal / Terapêutico",
+      "descricao": "Utiliza shampoos específicos (antifúngicos ou hipoalergênicos) prescritos por veterinários.\t\nPets com dermatites, alergias ou fungos.",
+      "valor": "100.00"
+    },
+    {
+      "id": "d52c",
+      "nome": "Banho a Seco",
+      "descricao": "Uso de sprays ou espumas higienizadoras sem o uso de água abundante.\tIdeal para filhotes sem vacina, idosos ou pets que não podem se estressar.",
+      "valor": "60.00"
+    },
+    {
+      "id": "54b8",
+      "nome": "Tosa Higiênica",
+      "descricao": "Focada apenas na limpeza: raspa-se o pelo das almofadas das patas (coxinins), região íntima e barriga.",
+      "valor": "20.00"
+    },
+    {
+      "id": "4897",
+      "nome": "Tosa Completa (Máquina)",
+      "descricao": "O pelo é cortado uniformemente com máquina. Pode ser alta ou bem curtinha.",
+      "valor": "130.00"
+    },
+    {
+      "id": "4d88",
+      "nome": "Desembolo (Remover nós)",
+      "descricao": "Focado em remover nós do pelo do animal, dependendo do tempo gasto o preço pode variar.\n",
+      "valor": "45.00"
     }
   ],
   "agendamentos": []

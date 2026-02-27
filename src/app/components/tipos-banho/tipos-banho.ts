@@ -5,11 +5,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMagnifyingGlass, faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { BanhoService, TipoBanho } from '../../services/banho-service';
+import { ExcluirBanhoModal } from '../excluir-banho-modal/excluir-banho-modal';
 import { CriarBanho } from '../criar-banho/criar-banho';
 
 @Component({
   selector: 'app-tipos-banho',
-  imports: [FontAwesomeModule, CriarBanho, CommonModule],
+  imports: [FontAwesomeModule, CriarBanho, CommonModule, ExcluirBanhoModal],
   templateUrl: './tipos-banho.html',
   styleUrl: './tipos-banho.css',
 })
@@ -35,6 +36,7 @@ export class TiposBanho implements OnInit {
     this.carregarBanhos();
   }
 
+  // Listando os banhos
   carregarBanhos() {
     this.banhoService.listar().subscribe({
       next: (dados) => {
@@ -44,11 +46,11 @@ export class TiposBanho implements OnInit {
       error: (err) => console.error('Erro ao carregar lista:', err),
     });
   }
-
+  // Abrindo o modal
   abrirModal() {
     this.exibirModal = true;
   }
-  
+
   // Lógica de edição
   prepararEdicao(banho: TipoBanho) {
     this.banhoSelecionado = banho;
@@ -59,5 +61,35 @@ export class TiposBanho implements OnInit {
     this.exibirModal = false;
     this.banhoSelecionado = null;
     this.carregarBanhos();
+  }
+
+  // Exclusão do Banho
+  banhoParaExcluir: TipoBanho | null = null;
+  exibirModalExcluir: boolean = false;
+
+  // 1. Chamado pelo botão da lixeira na tabela
+  prepararExclusao(banho: TipoBanho) {
+    this.banhoParaExcluir = banho;
+    this.exibirModalExcluir = true;
+  }
+
+  // 2. Chamado quando o usuário clica em "Sim, Excluir" no Modal
+  confirmarExclusao() {
+    if (this.banhoParaExcluir?.id) {
+      this.banhoService.deletar(this.banhoParaExcluir.id).subscribe({
+        next: () => {
+          this.carregarBanhos();
+          this.fecharModalExcluir();
+        },
+        error: (err) => {
+          console.error('Erro ao excluir: ', err);
+        },
+      });
+    }
+  }
+
+  fecharModalExcluir() {
+    this.exibirModalExcluir = false;
+    this.banhoParaExcluir = null;
   }
 }

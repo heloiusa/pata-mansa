@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -7,14 +8,14 @@ import { BanhoService, TipoBanho } from '../../services/banho-service';
 
 @Component({
   selector: 'app-criar-banho',
-  imports: [FontAwesomeModule, FormsModule],
+  imports: [FontAwesomeModule, FormsModule, NgxMaskDirective, NgxMaskPipe],
   templateUrl: './criar-banho.html',
   styleUrl: './criar-banho.css',
 })
 export class CriarBanho {
   iconAdd = faPlus;
   iconClose = faTimes;
-  
+
   //Objeto que reconhecerá os dados do formulário
   novoBanho: any = { nome: '', descricao: '', valor: 0 };
 
