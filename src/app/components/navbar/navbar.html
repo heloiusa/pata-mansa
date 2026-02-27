@@ -1,10 +1,13 @@
-<header class="bg-blue-600 text-white shadow-md p-2 flex justify-between items-center">
-  <h1 class="flex items-center gap-2 ml-6 text-2xl font-bold tracking-tight cursor-default">
+<header class="w-full bg-blue-600 text-white shadow-md p-0.5 flex flex-wrap justify-between items-center">
+  <h1 class="flex items-center gap-2 ml-2 md:ml-6 text-lg md:text-2xl font-bold tracking-tight cursor-default">
     Pata Mansa <fa-icon [icon]="iconPaw" class="text-amber-400"></fa-icon>
   </h1>
-
-  <nav>
-    <ul class="flex gap-4 mr-6">
+  <button (click)="alternarMenu()" class="md:hidden p-2 hover:text-amber-400 outline-none">
+    <fa-icon [icon]="iconMenu" class="hover:text-amber-400"></fa-icon>
+  </button>
+  <nav [class.hidden]="!menuAberto"
+  class="w-full md:block md:w-auto transition-all duration-300">
+    <ul class="flex flex-col md:flex-row md:gap-4 md:mr-6 items-end">
       <li>
         <a
           routerLink="/agendamentos"
