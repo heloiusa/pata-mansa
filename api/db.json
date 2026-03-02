@@ -75,7 +75,7 @@
     {
       "id": "3a6b",
       "nomeTutor": "Lucas Souza",
-      "telefone": "123456",
+      "telefone": "12345698755",
       "nomeAnimal": "Douglas",
       "observacao": "",
       "tipoBanho": "Banho a Seco",
@@ -93,6 +93,17 @@
       "data": "2026-03-25",
       "hora": "09:00",
       "valor": "100.00"
+    },
+    {
+      "id": "e143",
+      "nomeTutor": "João Vitor Lopes",
+      "telefone": "81945632121",
+      "nomeAnimal": "Soneca",
+      "observacao": "",
+      "tipoBanho": "Banho Higiênico",
+      "data": "2026-03-16",
+      "hora": "17:41",
+      "valor": 80
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

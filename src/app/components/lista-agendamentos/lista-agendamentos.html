@@ -2,14 +2,17 @@
   <div class="flex flex-col md:flex-row w-full justify-between items-center gap-2">
     <input
       type="text"
-      name=""
+      name="pesquisar"
       id=""
-      placeholder="Pesquisar agendamento"
+      placeholder="Pesquise o nome do animal ou tutor"
+      [(ngModel)]="termoBusca"
+      (input)="filtrarAgendamentos()"
       class="border border-gray-300 rounded-lg w-full md:flex-1 px-1 py-1.5 text-sm shadow-lg shadow-gray-400/30 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
     />
     <div class="flex w-full md:flex-row md:w-auto gap-2">
       <button
         type="submit"
+        (click)="filtrarAgendamentos()"
         class="flex-1 md:flex-none rounded-lg cursor-pointer py-1 md:px-3 md:py-1 text-sm md:text-base text-white bg-blue-600 shadow-lg shadow-gray-400/80 hover:bg-blue-500 transition-all duration-300"
       >
         Pesquisar
@@ -59,12 +62,13 @@
             </th>
           </tr>
         </thead>
+    
         <tbody class="divide-y divide-gray-200 bg-white">
-          @for (agenda of listaAgendamentos; track agenda.id) {
+          @for (agenda of agendamentoFiltrados; track agenda.id) {
             <tr class="md:overflow-hidden hover:bg-gray-300 transition-all duration-300">
               <td class="py-1 px-4 text-sm font-medium text-gray-900">{{ agenda.nomeAnimal }}</td>
               <td class="py-1 px-4 text-sm font-medium text-gray-900">{{ agenda.nomeTutor }}</td>
-              <td class="py-1 px-4 text-sm text-gray-500">{{ agenda.telefone }}</td>
+              <td class="py-1 px-4 text-sm text-gray-500">{{ agenda.telefone ?? '' | mask: '(00) 00000-0000' }}</td>
               <td class="py-1 px-4 text-sm text-gray-500">
                 {{ agenda.data }} às {{ agenda.hora }}
               </td>

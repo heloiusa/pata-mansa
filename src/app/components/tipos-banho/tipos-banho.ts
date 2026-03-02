@@ -92,5 +92,6 @@ export class TiposBanho implements OnInit {
   fecharModalExcluir() {
     this.exibirModalExcluir = false;
     this.banhoParaExcluir = null;
+    this.cdr.detectChanges();
   }
 }

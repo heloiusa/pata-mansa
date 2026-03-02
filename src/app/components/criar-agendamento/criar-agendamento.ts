@@ -3,11 +3,10 @@ import {
   EventEmitter,
   Output,
   OnInit,
-  ChangeDetectorRef,
-  input,
   Input,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +15,7 @@ import { BanhoService, TipoBanho } from '../../services/banho-service';
 
 @Component({
   selector: 'app-criar-agendamento',
-  imports: [FontAwesomeModule, FormsModule],
+  imports: [FontAwesomeModule, FormsModule, NgxMaskDirective, NgxMaskPipe],
   templateUrl: './criar-agendamento.html',
   styleUrl: './criar-agendamento.css',
 })
