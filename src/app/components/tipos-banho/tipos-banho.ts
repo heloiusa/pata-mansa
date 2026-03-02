@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 // ícones sendo importados
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMagnifyingGlass, faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +11,7 @@ import { CriarBanho } from '../criar-banho/criar-banho';
 
 @Component({
   selector: 'app-tipos-banho',
-  imports: [FontAwesomeModule, CriarBanho, CommonModule, ExcluirBanhoModal],
+  imports: [FormsModule, FontAwesomeModule, CriarBanho, CommonModule, ExcluirBanhoModal],
   templateUrl: './tipos-banho.html',
   styleUrl: './tipos-banho.css',
 })
@@ -23,10 +24,12 @@ export class TiposBanho implements OnInit {
 
   // Lista que guardará os banhos vindos da API
   listaBanhos: TipoBanho[] = [];
+  banhosFiltrados: TipoBanho[] = [];
   banhoSelecionado: TipoBanho | null = null;
-  
+
   // Lógica para abrir o modal de criar-banho
   exibirModal: boolean = false;
+  termoBusca: string = '';
 
   constructor(
     private banhoService: BanhoService,
@@ -42,11 +45,27 @@ export class TiposBanho implements OnInit {
     this.banhoService.listar().subscribe({
       next: (dados) => {
         this.listaBanhos = dados;
+        this.banhosFiltrados = dados;
         this.cdr.detectChanges();
       },
       error: (err) => console.error('Erro ao carregar lista:', err),
     });
   }
+
+  // buscar pelo nome do banho
+  // filtrando banhos
+  filtrarBanhos() {
+    if (!this.termoBusca) {
+      this.banhosFiltrados = this.listaBanhos;
+      return;
+    }
+
+    const termo = this.termoBusca.toLowerCase();
+    this.banhosFiltrados = this.listaBanhos.filter((banho) =>
+      banho.nome?.toLowerCase().includes(termo),
+    );
+  }
+
   // Abrindo o modal
   abrirModal() {
     this.exibirModal = true;

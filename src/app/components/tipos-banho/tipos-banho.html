@@ -2,13 +2,17 @@
   <div class="flex flex-col md:flex-row w-full justify-between items-center gap-2">
     <input
       type="text"
+      name="pesquisar"
       placeholder="Nome do banho"
+      [(ngModel)]="termoBusca"
+      (input)="filtrarBanhos()"
       class="border border-gray-300 rounded-lg w-full md:flex-1 px-1 py-1.5 text-sm shadow-lg shadow-gray-400/30 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
     />
 
     <div class="flex w-full md:w-auto gap-2">
       <button
         type="submit"
+        (click)="filtrarBanhos()"
         class="flex-1 md:flex-none rounded-lg cursor-pointer py-1 md:px-3 md:py-1 text-sm md:text-base text-white bg-blue-600 shadow-lg shadow-gray-400/80 hover:bg-blue-500 transition-all duration-300"
       >
         <span class="md:inline">Pesquisar</span>
@@ -61,7 +65,7 @@
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-200 bg-white">
-          @for (banho of listaBanhos; track banho.id) {
+          @for (banho of banhosFiltrados; track banho.id) {
             <tr class="md:overflow-hidden hover:bg-gray-300 transition-all duration-300">
               <td class="py-1 px-4 text-sm font-medium text-gray-900 truncate">{{ banho.nome }}</td>
               <td class="py-1 px-4 text-sm text-gray-500 truncate max-w-xs">

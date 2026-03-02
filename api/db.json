@@ -47,6 +47,18 @@
       "nome": "Desembolo (Remover nós)",
       "descricao": "Focado em remover nós do pelo do animal, dependendo do tempo gasto o preço pode variar.\n",
       "valor": "45.00"
+    },
+    {
+      "id": "ce62",
+      "nome": "Banho e Tosa Completa",
+      "descricao": "É feito todo o banho do cachorro, com direito a tonalizante, hidratação e escova. Além da tosa ao estilo escolhido pelo tutor",
+      "valor": "180.00"
+    },
+    {
+      "id": "ac2a",
+      "nome": "Tosa na Tesoura",
+      "descricao": "Feita inteiramente à mão. Mantém o aspecto natural e fofinho do pelo, sem o \"aspecto raspado\".",
+      "valor": "210.00"
     }
   ],
   "agendamentos": [
