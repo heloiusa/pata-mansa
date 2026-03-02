@@ -1,0 +1,30 @@
+<div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex justify-center items-center p-4">
+  <div
+    class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform transition-all p-6 text-center"
+  >
+    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
+      <fa-icon [icon]="iconTrash" class="text-red-600"></fa-icon>
+    </div>
+
+    <h3 class="text-lg font-bold text-gray-900">Confirmar Exclusão</h3>
+    <p class="text-sm text-gray-500 mt-2">
+      Você tem certeza que deseja excluir o agendamento de <b>{{ nomeAgenda }} </b> para o banho
+      <b>{{ banhoAgenda }}</b>? Esta ação não pode ser desfeita.
+    </p>
+
+    <div class="flex gap-3 mt-6">
+      <button
+        (click)="cancelar()"
+        class="flex-1 border border-gray-300 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition cursor-pointer"
+      >
+        Cancelar
+      </button>
+      <button
+        (click)="confirmar()"
+        class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 shadow-md cursor-pointer font-medium"
+      >
+        Sim, excluir
+      </button>
+    </div>
+  </div>
+</div>

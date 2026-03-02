@@ -27,7 +27,11 @@
   </div>
 
   @if (exibirModal) {
-    <app-criar-agendamento (aoFechar)="exibirModal = false"> </app-criar-agendamento>
+    <app-criar-agendamento
+      [agendaParaEditar]="agendamentoSelecionado"
+      (aoFechar)="exibirModal = false"
+    >
+    </app-criar-agendamento>
   }
 
   <div class="mt-4 md:mt-5 w-full shadow-lg ring-opacity-5 rounded-lg overflow-hidden">
@@ -35,56 +39,68 @@
       <table class="min-w-full divide-y divide-gray-300 table-fixed">
         <thead class="bg-blue-600">
           <tr>
-            <th
-              class="w-40 md:w-1/5 py-1.5 px-4 text-left text-sm md:text-base font-semibold text-white"
-            >
-              Nome
+            <th class="py-1.5 px-4 text-left text-sm md:text-base font-semibold text-white">
+              Nome do Pet
             </th>
-            <th
-              class="w-64 md:w-1/2 py-1.5 px-4 text-left text-sm md:text-base font-semibold text-white"
-            >
-              Descrição
+            <th class="py-1.5 px-4 text-left text-sm md:text-base font-semibold text-white">
+              Tutor
             </th>
-            <th
-              class="w-28 md:w-1/15 py-1.5 px-4 text-left text-sm md:text-base font-semibold text-white"
-            >
-              Valor
+            <th class="py-1.5 px-4 text-left text-sm md:text-base font-semibold text-white">
+              Telefone
             </th>
-            <th
-              class="w-24 md:w-1/12 py-1.5 px-4 text-center text-sm md:text-base font-semibold text-white"
-            >
+            <th class="py-1.5 px-4 text-left text-sm md:text-base font-semibold text-white">
+              Data e Hora
+            </th>
+            <th class="py-1.5 px-4 text-left text-sm md:text-base font-semibold text-white">
+              Banho
+            </th>
+            <th class="py-1.5 px-4 text-center text-sm md:text-base font-semibold text-white">
               Ação
             </th>
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-200 bg-white">
-          
+          @for (agenda of listaAgendamentos; track agenda.id) {
             <tr class="md:overflow-hidden hover:bg-gray-300 transition-all duration-300">
-              <td class="py-1 px-4 text-sm font-medium text-gray-900 truncate"></td>
-              <td class="py-1 px-4 text-sm text-gray-500 truncate max-w-xs">
-                
-              </td>
+              <td class="py-1 px-4 text-sm font-medium text-gray-900">{{ agenda.nomeAnimal }}</td>
+              <td class="py-1 px-4 text-sm font-medium text-gray-900">{{ agenda.nomeTutor }}</td>
+              <td class="py-1 px-4 text-sm text-gray-500">{{ agenda.telefone }}</td>
               <td class="py-1 px-4 text-sm text-gray-500">
-                
+                {{ agenda.data }} às {{ agenda.hora }}
               </td>
+              <td class="py-1 px-4 text-sm text-gray-500">{{ agenda.tipoBanho }}</td>
               <td class="whitespace-nowrap py-1 px-4 text-lg text-center font-medium space-x-4">
                 <button
-                  
+                  (click)="prepararEdicao(agenda)"
                   class="text-blue-600 hover:text-blue-500 cursor-pointer"
                 >
                   <fa-icon [icon]="iconEdit"></fa-icon>
                 </button>
                 <button
-                  
+                  (click)="prepararExclusao(agenda)"
                   class="text-red-600 hover:text-red-500 cursor-pointer"
                 >
                   <fa-icon [icon]="iconTrash"></fa-icon>
                 </button>
               </td>
             </tr>
-          
+          } @empty {
+            <td colspan="4" class="py-10 text-center text-gray-500 bg-white">
+              Nenhum banho cadastrado.
+            </td>
+          }
         </tbody>
       </table>
     </div>
   </div>
+
+  @if (exibirModalExcluir) {
+    <app-excluir-agenda-modal 
+    [nomeAgenda]="agendaParaExcluir?.nomeAnimal || ''"
+    [banhoAgenda]="agendaParaExcluir?.tipoBanho || '' "
+    (aoConfirmar)="confirmarExclusao()"
+    (aoCancelar)="fecharModalExcluir()"
+    >
+    </app-excluir-agenda-modal>
+  }
 </div>

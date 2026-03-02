@@ -17,12 +17,12 @@ export class BanhoService {
 
   constructor(private http: HttpClient) {}
 
-  //Método para Listar Todos
+  // Método para Listar Todos
   listar(): Observable<TipoBanho[]> {
     return this.http.get<TipoBanho[]>(this.API);
   }
 
-  //Método para Criar um novo (POST)
+  // Método para Criar um novo (POST)
   criar(banho: TipoBanho): Observable<TipoBanho> {
     return this.http.post<TipoBanho>(this.API, banho);
   }
@@ -32,7 +32,7 @@ export class BanhoService {
     return this.http.put<TipoBanho>(`${this.API}/${banho.id}`, banho);
   }
 
-  //Método para Deletar (DELETE)
+  // Método para Deletar (DELETE)
   deletar(id: string): Observable<void> {
     return this.http.delete<void>(`${this.API}/${id}`);
   }

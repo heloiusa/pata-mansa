@@ -24,6 +24,7 @@ export class TiposBanho implements OnInit {
   // Lista que guardará os banhos vindos da API
   listaBanhos: TipoBanho[] = [];
   banhoSelecionado: TipoBanho | null = null;
+  
   // Lógica para abrir o modal de criar-banho
   exibirModal: boolean = false;
 

@@ -13,35 +13,55 @@
       </button>
     </div>
 
-    <form class="p-6 space-y-4 mt-14">
+    <form class="p-6 space-y-4 mt-14" #agendamentoForm (ngSubmit)="salvar()">
       <!-- Nome do Tutor -->
       <div>
         <label class="block text-sm font-medium text-gray-700">Nome do Tutor</label>
         <input
           type="text"
+          name="nomeTutor"
           placeholder="Ex: Paulo Joaquim"
+          [(ngModel)]="novoAgendamento.nomeTutor"
           class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
         />
       </div>
 
       <!-- Telefone -->
       <div>
-        <label class="block text-sm font-medium text-gray-700">Telefone</label>
+        <label class="block text-sm font-medium text-gray-700"
+          >Telefone<span class="text-base text-red-500">*</span></label
+        >
         <input
           type="text"
+          name="telefone"
+          [(ngModel)]="novoAgendamento.telefone"
+          required
+          #tel="ngModel"
           placeholder="Ex: (81) 90123-6789"
           class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
         />
+        @if (tel.invalid && tel.touched) {
+          <span class="text-xs text-red-500">O telefone é obrigatório.</span>
+        }
       </div>
 
       <!-- Nome do Animal -->
       <div>
-        <label class="block text-sm font-medium text-gray-700">Nome do Animal</label>
+        <label class="block text-sm font-medium text-gray-700"
+          >Nome do Animal<span class="text-base text-red-500">*</span></label
+        >
         <input
           type="text"
+          name="nomeAnimal"
+          [(ngModel)]="novoAgendamento.nomeAnimal"
+          required
+          #animal="ngModel"
           placeholder="Ex: Capitão Romrom"
           class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
         />
+        @if (animal.invalid && animal.touched) {
+          <span class="text-xs text-red-500">O nome do pet é obrigatório.</span>
+        }
       </div>
 
       <!-- Obs do Animal -->
@@ -50,44 +70,78 @@
         <textarea
           placeholder="Tem alguma observação sobre esse agendamento?"
           rows="3"
+          name="observacao"
+          [(ngModel)]="novoAgendamento.observacao"
           class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
         ></textarea>
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-gray-700">Tipo de Banho</label>
+        <label class="block text-sm font-medium text-gray-700"
+          >Tipo de Banho<span class="text-base text-red-500">*</span></label
+        >
         <select
           name="tipoBanho"
           id="tipoBanho"
+          [(ngModel)]="novoAgendamento.tipoBanho"
+          required
+          #tipo="ngModel"
+          (change)="aoSelecionarBanho($event)"
           class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
         >
-          <option value="">Banho</option>
+          <!-- <option value="" disabled selected>Selecionar um banho</option> -->
+          @for (banho of listaBanho; track banho.id) {
+            <option [value]="banho.nome">{{ banho.nome }}</option>
+          }
+
+          @if (tipo.touched && tipo.invalid) {
+            <span class="text-xs text-red-500"
+              >A seleção do tipo de procedimento é obrigatório.</span
+            >
+          }
         </select>
       </div>
 
       <!-- Horário -->
       <div>
-        <label class="block text-sm font-medium text-gray-700">Data e Hora</label>
+        <label class="block text-sm font-medium text-gray-700"
+          >Data e Hora<span class="text-base text-red-500">*</span></label
+        >
         <div class="flex flex-row gap-2">
           <input
             type="date"
+            name="data"
+            [(ngModel)]="novoAgendamento.data"
             placeholder="Ex: Data e hora"
+            required
+            #data="ngModel"
             class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
           />
           <input
             type="time"
+            name="hora"
+            [(ngModel)]="novoAgendamento.hora"
+            required
+            #hora="ngModel"
             placeholder=""
             class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
           />
         </div>
+        
+        @if (hora.invalid && hora.touched || data.invalid && data.touched) {
+          <span class="text-base text-red-500"
+            >A data e a hora do agendamento são obrigatórias</span
+          >
+        }
       </div>
 
       <!-- Valor do Banho -->
       <div>
         <label class="block text-sm font-medium text-gray-700">Valor (R$)</label>
-        <p>valor</p>
+        <p>R$ {{ novoAgendamento.valor }}</p>
       </div>
 
+      <!-- Botões -->
       <div class="flex justify-between mt-6">
         <button
           type="button"
