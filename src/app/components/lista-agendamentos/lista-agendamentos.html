@@ -55,7 +55,7 @@
               Data e Hora
             </th>
             <th class="py-1.5 px-4 text-left text-sm md:text-base font-semibold text-white">
-              Banho
+              Serviços
             </th>
             <th class="py-1.5 px-4 text-center text-sm md:text-base font-semibold text-white">
               Ação
@@ -72,7 +72,7 @@
               <td class="py-1 px-4 text-sm text-gray-500">
                 {{ agenda.data }} às {{ agenda.hora }}
               </td>
-              <td class="py-1 px-4 text-sm text-gray-500">{{ agenda.tipoBanho }}</td>
+              <td class="py-1 px-4 text-sm text-gray-500">{{ extrairNomesServicos(agenda.servicos) }}</td>
               <td class="whitespace-nowrap py-1 px-4 text-lg text-center font-medium space-x-4">
                 <button
                   (click)="prepararEdicao(agenda)"
@@ -89,7 +89,7 @@
               </td>
             </tr>
           } @empty {
-            <td colspan="4" class="py-10 text-center text-gray-500 bg-white">
+            <td colspan="10" class="py-10 text-center text-gray-500 bg-white">
               Nenhum banho cadastrado.
             </td>
           }
@@ -101,7 +101,7 @@
   @if (exibirModalExcluir) {
     <app-excluir-agenda-modal 
     [nomeAgenda]="agendaParaExcluir?.nomeAnimal || ''"
-    [banhoAgenda]="agendaParaExcluir?.tipoBanho || '' "
+    [banhoAgenda]="agendaParaExcluir?.nomeTutor || '' "
     (aoConfirmar)="confirmarExclusao()"
     (aoCancelar)="fecharModalExcluir()"
     >

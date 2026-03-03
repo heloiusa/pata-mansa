@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+// criando a interface para poder agregar vários tipos de banhos
+export interface ServicoSelecionado {
+  nome: string;
+  valor: number;
+}
+
 export interface Agendamento {
   id?: string;
   nomeTutor?: string;
   telefone?: string;
   nomeAnimal?: string;
   observacao?: string;
-  tipoBanho: string;
+  servicos: ServicoSelecionado[];
   data?: string;
   hora?: string;
   valor?: number;

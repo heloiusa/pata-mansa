@@ -79,30 +79,48 @@
         ></textarea>
       </div>
 
-      <div>
+      <div class="">
         <label class="block text-sm font-medium text-gray-700"
           >Tipo de Banho<span class="text-base text-red-500">*</span></label
         >
-        <select
-          name="tipoBanho"
-          id="tipoBanho"
-          [(ngModel)]="novoAgendamento.tipoBanho"
-          required
-          #tipo="ngModel"
-          (change)="aoSelecionarBanho($event)"
-          class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
-        >
-          <!-- <option value="" disabled selected>Selecionar um banho</option> -->
-          @for (banho of listaBanho; track banho.id) {
-            <option [value]="banho.nome">{{ banho.nome }}</option>
-          }
+        <div class="flex flex-row gap-2">
+          <select
+            #selectBanho
+            required
+            class="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:ring-2 focus:ring-blue-500 outline-none"
+          >
+            <!-- <option value="" disabled selected>Selecionar um banho</option> -->
+            @for (banho of listaBanho; track banho.id) {
+              <option [value]="banho.nome">{{ banho.nome }} - {{ banho.valor }}</option>
+            }
+          </select>
+          <button
+            type="button"
+            (click)="adicionarServico(selectBanho.value)"
+            class="bg-blue-600 text-white px-1.5 py-0.5 rounded-lg hover:bg-blue-500 transition cursor-pointer"
+          >
+            <fa-icon [icon]="iconAdd"></fa-icon>
+          </button>
+        </div>
+      </div>
 
-          @if (tipo.touched && tipo.invalid) {
-            <span class="text-xs text-red-500"
-              >A seleção do tipo de procedimento é obrigatório.</span
-            >
-          }
-        </select>
+      <div class="">
+        <h4 class="text-sm font-medium text-gray-700">Serviços Adicionados</h4>
+        @for (item of novoAgendamento.servicos; track $index) {
+          <ul>
+            <li>
+              {{ item.nome }} - <span class="font-bold">(R$ {{ item.valor }})</span>
+              <button
+                (click)="removerServico($index)"
+                class="text-red-500 hover:text-red-700 cursor-pointer"
+              >
+                <fa-icon [icon]="iconClose"></fa-icon>
+              </button>
+            </li>
+          </ul>
+        } @empty {
+          <li class="text-sm text-gray-400 italic">Nenhum serviço selecionado</li>
+        }
       </div>
 
       <!-- Horário -->
@@ -140,8 +158,8 @@
 
       <!-- Valor do Banho -->
       <div>
-        <label class="block text-sm font-medium text-gray-700">Valor (R$)</label>
-        <p>R$ {{ novoAgendamento.valor }}</p>
+        <label class="block text-sm font-medium text-gray-700">Valor Total (R$)</label>
+        <p>R$ {{ novoAgendamento.valorTotal || 0 }}</p>
       </div>
 
       <!-- Botões -->

@@ -121,4 +121,9 @@ export class ListaAgendamentos {
     this.agendaParaExcluir = null;
     this.cdr.detectChanges();
   }
+
+  extrairNomesServicos(servicos: any[] | undefined): string {
+    if (!servicos || !Array.isArray(servicos)) return 'Nenhum';
+    return servicos.map((s) => s.nome).join(', ');
+  }
 }
