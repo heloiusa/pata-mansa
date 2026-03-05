@@ -1,4 +1,12 @@
 {
+  "usuarios": [
+    {
+      "id": "1",
+      "email": "admin@patamansa.com",
+      "senha": "senha",
+      "nome": "Heloisa"
+    }
+  ],
   "tipos-banho": [
     {
       "id": "4eb5",
@@ -70,17 +78,57 @@
       "observacao": "",
       "servicos": [
         {
-          "nome": "Medicinal  / Terapêutico",
-          "valor": "100.00"
-        },
-        {
           "nome": "Banho Higiênico",
           "valor": 80
+        },
+        {
+          "nome": "Banho e Tosa Completa",
+          "valor": "180.00"
         }
       ],
       "data": "2026-03-17",
       "hora": "17:05",
-      "valorTotal": 180
+      "valorTotal": 260
+    },
+    {
+      "id": "e9a3",
+      "nomeTutor": "Denise Lundrig",
+      "telefone": "81945632121",
+      "nomeAnimal": "Soneca",
+      "observacao": "",
+      "servicos": [
+        {
+          "nome": "Tosa Higiênica",
+          "valor": "20.00"
+        }
+      ],
+      "data": "2026-03-03",
+      "hora": "16:16",
+      "valorTotal": 20
+    },
+    {
+      "id": "90ea",
+      "nomeTutor": "Vanessa Costa",
+      "telefone": "81974144563",
+      "nomeAnimal": "Mia",
+      "observacao": "",
+      "servicos": [
+        {
+          "nome": "Tosa Completa (Máquina)",
+          "valor": "130.00"
+        },
+        {
+          "nome": "Tosa Higiênica",
+          "valor": "20.00"
+        },
+        {
+          "nome": "Tosa Higiênica",
+          "valor": "20.00"
+        }
+      ],
+      "data": "2026-03-24",
+      "hora": "16:36",
+      "valorTotal": 170
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

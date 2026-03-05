@@ -73,6 +73,19 @@ export class CriarAgendamento implements OnInit {
     }
   }
 
+  salvar() {
+    if (this.novoAgendamento.id) {
+      this.agendamentoService.editar(this.novoAgendamento).subscribe(() => this.fechar());
+    } else {
+      this.agendamentoService.criar(this.novoAgendamento).subscribe({
+        next: (res) => {
+          console.log('Agendamento salvo: ', res);
+          this.fechar();
+        },
+        error: (err) => console.error('Erro ao salvar agendamento: ', err),
+      });
+    }
+  }
   // função para adicionar o serviço a lista
   adicionarServico(banhoNome: string) {
     const banho = this.listaBanho.find((b) => b.nome === banhoNome);
@@ -93,19 +106,5 @@ export class CriarAgendamento implements OnInit {
       (acc: number, atual: any) => acc + Number(atual.valor),
       0,
     );
-  }
-
-  salvar() {
-    if (this.novoAgendamento.id) {
-      this.agendamentoService.editar(this.novoAgendamento).subscribe(() => this.fechar());
-    } else {
-      this.agendamentoService.criar(this.novoAgendamento).subscribe({
-        next: (res) => {
-          console.log('Agendamento salvo: ', res);
-          this.fechar();
-        },
-        error: (err) => console.error('Erro ao salvar agendamento: ', err),
-      });
-    }
   }
 }

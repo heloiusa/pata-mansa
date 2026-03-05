@@ -62,6 +62,7 @@ export class ListaAgendamentos {
   filtrarAgendamentos() {
     if (!this.termoBusca) {
       this.agendamentoFiltrados = this.listaAgendamentos;
+      this.cdr.detectChanges();
       return;
     }
 

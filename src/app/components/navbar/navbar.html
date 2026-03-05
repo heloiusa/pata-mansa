@@ -7,7 +7,8 @@
   </button>
   <nav [class.hidden]="!menuAberto"
   class="w-full md:block md:w-auto transition-all duration-300">
-    <ul class="flex flex-col md:flex-row md:gap-4 md:mr-6 items-end">
+    <ul class="flex flex-col md:flex-row md:gap-0.5 items-end">
+      <!-- Agendamentos -->
       <li>
         <a
           routerLink="/agendamentos"
@@ -19,12 +20,13 @@
           <fa-icon
             [icon]="iconCalendar"
             [class.opacity-100]="rlaAgendamento.isActive"
-            [class.scale-110]="rlaAgendamento.isActive"
+            [class.scale-100]="rlaAgendamento.isActive"
             class="opacity-60 group-hover:opacity-100 transition-all"
           ></fa-icon>
         </a>
       </li>
 
+      <!-- Tipos de Banho -->
       <li>
         <a
           routerLink="/tipos-banho"
@@ -37,6 +39,23 @@
             [icon]="iconBath"
             [class.opacity-100]="rlaBanhos.isActive"
             [class.rotate-12]="rlaBanhos.isActive"
+            class="opacity-60 group-hover:opacity-100 transition-all"
+          ></fa-icon>
+        </a>
+      </li>
+
+      <!-- Saída -->
+        <li>
+        <a
+          routerLink="/login"
+          routerLinkActive="font-semibold text-amber-400"
+          #rlaBanhos="routerLinkActive"
+          class="flex items-center gap-2 px-4 py-2 rounded-2xl hover:bg-blue-500 transition-all duration-300 group"
+        >
+          <span>Sair</span>
+          <fa-icon
+            [icon]="iconLogout"
+            [class.opacity-100]="rlaBanhos.isActive"
             class="opacity-60 group-hover:opacity-100 transition-all"
           ></fa-icon>
         </a>

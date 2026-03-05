@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faPaw, faCalendar, faBath, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faPaw, faCalendar, faBath, faBars,  faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -15,6 +15,7 @@ export class Navbar {
   iconCalendar = faCalendar;
   iconBath = faBath;
   iconMenu = faBars;
+  iconLogout = faArrowRightFromBracket
 
   menuAberto: boolean = false;
 

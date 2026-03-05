@@ -1,4 +1,7 @@
+@if (exibirNavbar()) {
 <app-navbar></app-navbar>
-<div class="mx-auto px-4.5 my-5.5">
+}
+
+<div [className]="exibirNavbar() ? 'mx-auto px-4.5 my-5.5' : ''">
   <router-outlet></router-outlet>
 </div>

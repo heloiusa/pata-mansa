@@ -62,17 +62,21 @@
             </th>
           </tr>
         </thead>
-    
+
         <tbody class="divide-y divide-gray-200 bg-white">
           @for (agenda of agendamentoFiltrados; track agenda.id) {
             <tr class="md:overflow-hidden hover:bg-gray-300 transition-all duration-300">
               <td class="py-1 px-4 text-sm font-medium text-gray-900">{{ agenda.nomeAnimal }}</td>
               <td class="py-1 px-4 text-sm font-medium text-gray-900">{{ agenda.nomeTutor }}</td>
-              <td class="py-1 px-4 text-sm text-gray-500">{{ agenda.telefone ?? '' | mask: '(00) 00000-0000' }}</td>
+              <td class="py-1 px-4 text-sm text-gray-500">
+                {{ agenda.telefone ?? '' | mask: '(00) 00000-0000' }}
+              </td>
               <td class="py-1 px-4 text-sm text-gray-500">
                 {{ agenda.data }} às {{ agenda.hora }}
               </td>
-              <td class="py-1 px-4 text-sm text-gray-500">{{ extrairNomesServicos(agenda.servicos) }}</td>
+              <td class="py-1 px-4 text-sm text-gray-500">
+                {{ extrairNomesServicos(agenda.servicos) }}
+              </td>
               <td class="whitespace-nowrap py-1 px-4 text-lg text-center font-medium space-x-4">
                 <button
                   (click)="prepararEdicao(agenda)"
@@ -99,11 +103,11 @@
   </div>
 
   @if (exibirModalExcluir) {
-    <app-excluir-agenda-modal 
-    [nomeAgenda]="agendaParaExcluir?.nomeAnimal || ''"
-    [banhoAgenda]="agendaParaExcluir?.nomeTutor || '' "
-    (aoConfirmar)="confirmarExclusao()"
-    (aoCancelar)="fecharModalExcluir()"
+    <app-excluir-agenda-modal
+      [nomeAgenda]="agendaParaExcluir?.nomeAnimal || ''"
+      [banhoAgenda]="agendaParaExcluir?.nomeTutor || ''"
+      (aoConfirmar)="confirmarExclusao()"
+      (aoCancelar)="fecharModalExcluir()"
     >
     </app-excluir-agenda-modal>
   }
